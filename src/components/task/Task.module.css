@@ -1,4 +1,20 @@
 .task {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+.text {
+    font-size: 18px;
+}
+
+.buttons {
+    display: flex;
+    gap: 8px;
+}
+
+.button {
+    cursor: pointer;
+    width: 24px;
+    padding: 8px;
 }

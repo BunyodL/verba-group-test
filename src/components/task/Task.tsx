@@ -1,8 +1,7 @@
+import DeleteIcon from "@mui/icons-material/Delete";
+import DoneIcon from "@mui/icons-material/Done";
 import { Task as ITask } from "../../redux/slices/tasksSlice";
 import st from "./Task.module.css";
-import DoneIcon from "@mui/icons-material/Done";
-import DeleteIcon from "@mui/icons-material/Delete";
-import { Button } from "@mui/material";
 
 type TaskProps = ITask & {
     onDoneTask: (taskId: number) => void;
@@ -12,14 +11,26 @@ type TaskProps = ITask & {
 const Task = ({ text, id, onDeleteTask, onDoneTask }: TaskProps) => {
     return (
         <div className={st.task}>
-            <span>{text}</span>
-            <div>
-                <Button onClick={() => onDoneTask(id)}>
-                    <DoneIcon color="action" />
-                </Button>
-                <Button onClick={() => onDeleteTask(id)}>
-                    <DeleteIcon color="action" />
-                </Button>
+            <span className={st.text}>{text}</span>
+            <div className={st.buttons}>
+                <DoneIcon
+                    color="action"
+                    className={st.button}
+                    onClick={() => onDoneTask(id)}
+                    sx={{
+                        width: "40px",
+                        height: "40px",
+                    }}
+                />
+                <DeleteIcon
+                    color="action"
+                    className={st.button}
+                    onClick={() => onDeleteTask(id)}
+                    sx={{
+                        width: "40px",
+                        height: "40px",
+                    }}
+                />
             </div>
         </div>
     );
