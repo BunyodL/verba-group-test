@@ -17,15 +17,17 @@ const TasksList = () => {
     };
 
     return (
-        <div className={st.tasksList}>
-            {tasks.map((task) => (
-                <Task
-                    {...task}
-                    onDoneTask={handleDoneTask}
-                    onDeleteTask={handleDeleteTask}
-                    key={task.id}
-                />
-            ))}
+        <div className={tasks.length > 0 ? st.tasksList : ""}>
+            {tasks.length > 0
+                ? tasks.map((task) => (
+                      <Task
+                          {...task}
+                          onDoneTask={handleDoneTask}
+                          onDeleteTask={handleDeleteTask}
+                          key={task.id}
+                      />
+                  ))
+                : "Задач нет, пополните список..."}
         </div>
     );
 };
