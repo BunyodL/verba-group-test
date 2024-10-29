@@ -1,7 +1,8 @@
-import styles from "./Home.module.css";
-import Navbar from "../../components/navbar/Navbar";
-import { Paper } from "../../components/paper";
 import { ControlPanel } from "../../components/controlPanel";
+import { Navbar } from "../../components/navbar";
+import { Paper } from "../../components/paper";
+import { TasksList } from "../../components/tasksList";
+import styles from "./Home.module.css";
 
 const Home = () => {
     return (
@@ -9,8 +10,9 @@ const Home = () => {
             <div className={styles["papers-wrapper"]}>
                 <ControlPanel />
 
-                <Paper>
+                <Paper className={styles["todolist-paper"]}>
                     <Navbar />
+                    <TasksList />
                 </Paper>
             </div>
         </section>

@@ -1,0 +1,12 @@
+#tabs {
+
+}
+div[aria-label="wrapped label tabs"] {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#tab {
+    color: white;
+}

@@ -1,9 +1,19 @@
+import { useTasks } from "../../hooks";
+import { Task } from "../task";
+
 const TasksList = () => {
-  return (
-    <div>
-      
-    </div>
-  )
+    const tasks = useTasks();
+
+    return (
+        <div>
+            {tasks.map((task) => (
+                <Task
+                    {...task}
+                    key={task.id}
+                />
+            ))}
+        </div>
+    );
 };
 
-export default TasksList
+export default TasksList;

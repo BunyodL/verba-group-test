@@ -1,34 +1,35 @@
-import * as React from "react";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
+import Tab from "@mui/material/Tab";
+import Tabs from "@mui/material/Tabs";
+import React from "react";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
+import { changeTab, TabStatus } from "../../redux/slices/navbarSlice";
+import st from "./Navbar.module.css";
 
 export default function Navbar() {
-    const [value, setValue] = React.useState("one");
+    const dispatch = useAppDispatch();
+    const currentTab = useAppSelector((state) => state.navbar.tab);
+    const tabs = useAppSelector((state) => state.navbar.tabs);
 
-    const handleChange = (event: React.SyntheticEvent, newValue: string) => {
-        setValue(newValue);
+    const handleTabChange = (event: React.SyntheticEvent, newValue: TabStatus) => {
+        dispatch(changeTab(newValue));
     };
 
     return (
-        <Box sx={{ width: "100%" }}>
+        <Box sx={{ width: "100%"}}>
             <Tabs
-                value={value}
-                onChange={handleChange}
-                aria-label="wrapped label tabs example"
+                value={currentTab}
+                onChange={handleTabChange}
+                aria-label="wrapped label tabs"
+                id={st.tabs}
             >
-                <Tab
-                    value="one"
-                    label="Item One"
-                />
-                <Tab
-                    value="two"
-                    label="Item Two"
-                />
-                <Tab
-                    value="three"
-                    label="Item Three"
-                />
+                {tabs.map((tab) => (
+                    <Tab
+                        value={tab.status}
+                        label={tab.name}
+                        id={st.tab}
+                    />
+                ))}
             </Tabs>
         </Box>
     );

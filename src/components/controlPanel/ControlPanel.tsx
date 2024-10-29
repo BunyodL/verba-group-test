@@ -4,12 +4,19 @@ import { Button, TextField } from "@mui/material";
 import { Paper } from "../paper";
 import st from "./ControlPanel.module.css";
 import { ChangeEvent, useState } from "react";
+import { useAppDispatch } from "../../hooks/redux-hooks";
+import { clearTasks } from "../../redux/slices/tasksSlice";
 
 const ControlPanel = () => {
+    const dispatch = useAppDispatch();
     const [inputValue, setInputValue] = useState("");
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         setInputValue(event.target.value);
+    };
+
+    const handleClear = () => {
+        dispatch(clearTasks());
     };
 
     return (
@@ -35,6 +42,7 @@ const ControlPanel = () => {
                 sx={{
                     display: "flex",
                 }}
+                onClick={handleClear}
             >
                 <span>Очистить</span>
                 <MenuIcon
