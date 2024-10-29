@@ -17,8 +17,10 @@ const router = createBrowserRouter([
 
 export const Providers = () => {
     return (
-        <Provider store={store}>
-            <RouterProvider router={router} />
-        </Provider>
+        <main>
+            <Provider store={store}>
+                <RouterProvider router={router} />
+            </Provider>
+        </main>
     );
 };

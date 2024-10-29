@@ -1,0 +1,15 @@
+.control-panel {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    max-height: 60px;
+}
+
+#textfield {
+    color: white;
+}
+
+#textfield::placeholder {
+    color: white;
+    opacity: 0.7;
+}
