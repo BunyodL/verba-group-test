@@ -1,11 +1,24 @@
-import { ReactNode } from "react";
 import { Provider } from "react-redux";
 import { store } from "./store";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Login from "../pages/login/Login";
+import Home from "../pages/home/Home";
 
-type ProvidersProps = {
-    children: ReactNode;
-};
+const router = createBrowserRouter([
+    {
+        path: "/",
+        element: <Home />,
+    },
+    {
+        path: "/login",
+        element: <Login />,
+    },
+]);
 
-export const Providers = ({ children }: ProvidersProps) => {
-    return <Provider store={store}>{children}</Provider>;
+export const Providers = () => {
+    return (
+        <Provider store={store}>
+            <RouterProvider router={router} />
+        </Provider>
+    );
 };
