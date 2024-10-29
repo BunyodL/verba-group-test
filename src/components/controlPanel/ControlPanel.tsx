@@ -35,6 +35,7 @@ const ControlPanel = () => {
                 variant="contained"
                 size="small"
                 onClick={handleAddTask}
+                className={st.addTaskBtn}
             >
                 <AddIcon />
                 <span>Добавить</span>
@@ -45,6 +46,7 @@ const ControlPanel = () => {
                 onChange={handleChange}
                 placeholder="Пополните список..."
                 id={st.textfield}
+                className={st.textfield}
             />
             <Button
                 size="small"
@@ -54,6 +56,7 @@ const ControlPanel = () => {
                     display: "flex",
                 }}
                 onClick={handleClear}
+                className={st.clearBtn}
             >
                 <span>Очистить</span>
                 <MenuIcon

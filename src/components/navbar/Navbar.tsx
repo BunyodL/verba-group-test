@@ -18,7 +18,7 @@ export default function Navbar() {
     };
 
     return (
-        <Box sx={{ width: "100%" }}>
+        <Box sx={{ width: "100%", height: "40px" }}>
             <Tabs
                 value={currentTab}
                 onChange={handleTabChange}

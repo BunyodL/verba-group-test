@@ -7,3 +7,20 @@ div[aria-label="wrapped label tabs"] {
 #tab {
     color: white;
 }
+
+@media screen and (width <= 768px) {
+    #tabs > div {
+        height: 40px;
+    }
+
+    div[aria-label="wrapped label tabs"] {
+        overflow-x: auto;
+    }
+
+    #tab {
+        /* height: 40px !important; */
+        padding: 8px;
+        min-height: 40px;
+        font-size: 12px !important;
+    }
+}

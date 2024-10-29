@@ -13,3 +13,27 @@
     color: white;
     opacity: 0.7;
 }
+
+@media screen and (width <= 500px) {
+    .control-panel {
+        display: grid;
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas:
+            "input input"
+            "add clear";
+        max-height: unset;
+        justify-content: unset;
+    }
+
+    .addTaskBtn {
+        grid-area: add;
+    }
+    .textfield {
+        grid-area: input;
+        grid-column: span 2;
+    }
+    .clearBtn {
+        grid-area: clear;
+    }
+}

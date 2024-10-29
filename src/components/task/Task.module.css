@@ -18,3 +18,14 @@
     width: 24px;
     padding: 8px;
 }
+
+@media screen and (width <= 768px) {
+    .text {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 360px;
+        height: 1.2em;
+        white-space: nowrap;
+    }
+}
+
