@@ -5,11 +5,21 @@ import { Paper } from "../paper";
 import st from "./ControlPanel.module.css";
 import { ChangeEvent, useState } from "react";
 import { useAppDispatch } from "../../hooks/redux-hooks";
-import { clearTasks } from "../../redux/slices/tasksSlice";
+import { addTask, clearTasks } from "../../redux/slices/tasksSlice";
 
 const ControlPanel = () => {
     const dispatch = useAppDispatch();
     const [inputValue, setInputValue] = useState("");
+
+    const handleAddTask = () => {
+        if (!inputValue) {
+            alert("Заполните поле");
+            return;
+        }
+
+        dispatch(addTask(inputValue));
+        setInputValue("");
+    };
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         setInputValue(event.target.value);
@@ -24,6 +34,7 @@ const ControlPanel = () => {
             <Button
                 variant="contained"
                 size="small"
+                onClick={handleAddTask}
             >
                 <AddIcon />
                 <span>Добавить</span>
