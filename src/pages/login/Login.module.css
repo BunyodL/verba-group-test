@@ -1,0 +1,44 @@
+.login-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+.title {
+    color: aliceblue;
+}
+
+.login {
+    display: flex;
+    padding: 12px 50px !important;
+    max-width: 450px;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    flex-direction: column;
+}
+
+.form {
+    display: flex;
+    gap: 12px;
+    flex-direction: column;
+    width: 100%;
+}
+
+#email,
+#password {
+    color: aliceblue !important;
+}
+
+.checkbox-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+#showPassword {
+    color: aliceblue !important;
+    background-color: aliceblue;
+}
