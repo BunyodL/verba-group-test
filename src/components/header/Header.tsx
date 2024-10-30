@@ -7,11 +7,19 @@ import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { Link, useLocation } from "react-router-dom";
 import { useAuthCheck } from "../../hooks";
+import { useAppDispatch } from "../../hooks/redux-hooks";
+import { setAuth } from "../../redux/slices/authSlice";
 
 export default function Header() {
     useAuthCheck();
     const location = useLocation();
     const isHomePage = location.pathname === "/";
+    const dispatch = useAppDispatch();
+
+    const handleQuit = () => {
+        dispatch(setAuth(false));
+        localStorage.removeItem("auth");
+    };
 
     return (
         <Box sx={{ flexGrow: 1 }}>
@@ -34,7 +42,12 @@ export default function Header() {
                         News
                     </Typography>
                     <Link to={isHomePage ? "/login" : "/"}>
-                        <Button color="inherit">{isHomePage ? "Login" : "Home"}</Button>
+                        <Button
+                            color="inherit"
+                            onClick={handleQuit}
+                        >
+                            {isHomePage ? "Quit" : "Home"}
+                        </Button>
                     </Link>
                 </Toolbar>
             </AppBar>
