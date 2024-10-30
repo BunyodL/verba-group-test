@@ -5,7 +5,7 @@ import { useFormManagement } from "./lib/useFormManagement";
 import st from "./Login.module.css";
 
 export const Login = () => {
-    const formik = useFormManagement();
+    const { formik, isLoading } = useFormManagement();
     const [showPassword, setShowPassword] = useState(false);
 
     const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -56,8 +56,9 @@ export const Login = () => {
                         variant="contained"
                         fullWidth
                         type="submit"
+                        disabled={isLoading}
                     >
-                        Войти
+                        {isLoading ? "Идет загрузка..." : "Войти"}
                     </Button>
                 </form>
             </Paper>

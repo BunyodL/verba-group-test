@@ -1,8 +1,15 @@
 import { useFormik } from "formik";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
+import { setAuth } from "../../../redux/slices/authSlice";
 import { EMAIL_REGEX, PASSWORD_REGEX } from "../../../utils/regex";
+import { useAppDispatch } from "./../../../hooks/redux-hooks";
 
 export const useFormManagement = () => {
+    const [isLoading, setIsLoading] = useState(false);
+    const navigate = useNavigate();
+    const dispatch = useAppDispatch();
     const validationSchema = yup.object({
         email: yup
             .string()
@@ -21,18 +28,25 @@ export const useFormManagement = () => {
     const formik = useFormik({
         initialValues: {
             email: "foobar@example.com",
-            password: "foobar",
+            password: "Foobar123",
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {
             const isEmailValid = EMAIL_REGEX.test(values.email);
             const isPasswordValid = PASSWORD_REGEX.test(values.password);
+            setIsLoading(true);
 
             if (isEmailValid && isPasswordValid) {
+                dispatch(setAuth(true));
+                localStorage.setItem("auth", JSON.stringify(true));
                 alert(JSON.stringify(values, null, 2));
             }
+            setTimeout(() => {
+                setIsLoading(false);
+                navigate("/");
+            }, 2000);
         },
     });
 
-    return formik;
+    return { formik, isLoading };
 };

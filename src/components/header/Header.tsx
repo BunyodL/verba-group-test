@@ -6,8 +6,10 @@ import IconButton from "@mui/material/IconButton";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { Link, useLocation } from "react-router-dom";
+import { useAuthCheck } from "../../hooks";
 
 export default function Header() {
+    useAuthCheck();
     const location = useLocation();
     const isHomePage = location.pathname === "/";
 

@@ -1,10 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { navbarSlice, tasksSlice } from "./slices";
+import { navbarSlice, tasksSlice, authSlice } from "./slices";
 
 export const store = configureStore({
     reducer: {
         navbar: navbarSlice,
         tasks: tasksSlice,
+        auth: authSlice,
     },
 });
 
