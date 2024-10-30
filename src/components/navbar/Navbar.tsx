@@ -1,7 +1,6 @@
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
-import React from "react";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux-hooks";
 import { useTotalTabTasks } from "../../hooks/useTotalTabTasks";
 import { changeTab, TabStatus } from "../../redux/slices/navbarSlice";
@@ -13,7 +12,7 @@ export default function Navbar() {
     const tabs = useAppSelector((state) => state.navbar.tabs);
     const tabTasks = useTotalTabTasks();
 
-    const handleTabChange = (event: React.SyntheticEvent, newValue: TabStatus) => {
+    const handleTabChange = (_: unknown, newValue: TabStatus) => {
         dispatch(changeTab(newValue));
     };
 
