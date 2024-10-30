@@ -27,8 +27,8 @@ export const useFormManagement = () => {
 
     const formik = useFormik({
         initialValues: {
-            email: "foobar@example.com",
-            password: "Foobar123",
+            email: "",
+            password: "",
         },
         validationSchema: validationSchema,
         onSubmit: (values) => {
